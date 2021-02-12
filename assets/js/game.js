@@ -1,22 +1,32 @@
+// Game States
+// "WIN" - Player robot defeated all enemy-robots
+//    * Fight all enemy-robots
+//    * Defeat each enemy-robot
+// "LOSE" - Player robot's health is zero or less
+
+
+
 // var playerName captures and stores response
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-// log multiple values at once
-console.log(playerName, playerAttack, playerHealth);
-
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-var fight = function() {
+for(var i = 0; i < enemyNames.length; i++) {
+    console.log(enemyNames[i]);
+    console.log(i);
+    console.log(enemyNames[i] + " is at " + i + " index");
+}
+// fight function
+var fight = function(enemyName) {
     // Alert players they're starting the round
     window.alert("Welcome to Robot Gladiators!");
-    // Subtract value of playerAttack form value of enemyHealth, use result to uprate value in enemyHealth variable
-    enemyHealth = enemyHealth - playerAttack;
 
+    // ask player if they'd like to fight or run
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT or 'SKIP' to choose.");
     // if player chooses to fight, fight
     if (promptFight === "fight" || promptFight ==="FIGHT") {
@@ -62,10 +72,13 @@ var fight = function() {
         else {
             fight();
         }
+        // if player did not choose 1 or 2 in prompt
         window.alert(playerName + " has chosen to skip the fight!");
     } else {
         window.alert("You need to choose a valid option. Try again!")
     }    
-}   
-// must call fx
-fight();
+};   
+// call fight function to start game
+for(var i = 0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+}
